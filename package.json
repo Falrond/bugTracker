@@ -1,0 +1,25 @@
+{
+  "name": "social-app",
+  "version": "0.1.0",
+  "private": true,
+  "scripts": {
+    "dev": "next dev",
+    "build": "next build",
+    "start": "next start"
+  },
+  "dependencies": {
+    "date-fns": "^2.19.0",
+    "firebase": "^8.3.1",
+    "next": "10.0.9",
+    "react": "17.0.1",
+    "react-dom": "17.0.1",
+    "react-icons": "^4.2.0",
+    "react-multi-select-component": "^3.1.6"
+  },
+  "devDependencies": {
+    "@tailwindcss/jit": "^0.1.4",
+    "autoprefixer": "^10.2.5",
+    "postcss": "^8.2.8",
+    "tailwindcss": "^2.0.4"
+  }
+}

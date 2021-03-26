@@ -1,0 +1,72 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Spartan:wght@400;500;600;700&display=swap');
+
+body {
+  background-color: #3c3f51;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+.fadein {
+  animation: fadein 1s;
+}
+
+.center {
+  transform: translate(-50%, -50%);
+}
+
+/* td {
+  height: 70px;
+} */
+/* th:last-child {
+  :not(:last-child)
+  border-bottom: 2px solid rgba(0, 0, 0, 0.1);
+} */
+
+@keyframes fadein {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@media (min-width: 640px) {
+  table {
+    display: inline-table !important;
+  }
+
+  thead tr:not(:first-child) {
+    display: none;
+  }
+}
+
+td:not(:last-child) {
+  border-bottom: 0;
+}
+
+.multi-select {
+  --rmsc-main: none !important;
+  --rmsc-hover: #282a34 !important;
+  --rmsc-selected: #353535 !important;
+  --rmsc-border: none !important;
+  --rmsc-gray: #9ca3af !important;
+  --rmsc-bg: #585d73 !important;
+  --rmsc-p: 4px !important; /* Spacing */
+  --rmsc-radius: 10px; /* Radius */
+  --rmsc-h: 48px !important; /* Height */
+}
+
+.multi-select:focus {
+  outline: none;
+}
