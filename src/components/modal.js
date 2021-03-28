@@ -1,6 +1,6 @@
 import React from 'react';
 
-const Modal = ({ isOpen, closeModal, removeProject }) => {
+const Modal = ({ isOpen, closeModal, removeProject, error }) => {
   return (
     isOpen && (
       <div className="fixed flex flex-col items-center justify-center m-auto w-4/5 md:w-[350px] h-[200px] md:h-[220px] inset-2/4 center z-20 bg-dark-gray rounded-md shadow-md transition">
@@ -9,6 +9,11 @@ const Modal = ({ isOpen, closeModal, removeProject }) => {
             Are you sure?
           </h1>
         </div>
+        {error && (
+          <p className=" font-spartan font-bold text-sm my-2 text-red-500">
+            {error}
+          </p>
+        )}
         <div className="flex items-center text-sm my-4  ">
           <button
             className="bg-red-300 py-2 px-6 rounded-md hover:bg-red-400 font-bold font-spartan mx-4 text-gray-800"

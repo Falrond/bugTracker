@@ -23,6 +23,9 @@ a {
 .center {
   transform: translate(-50%, -50%);
 }
+.hd {
+  white-space: initial;
+}
 
 /* td {
   height: 70px;

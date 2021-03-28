@@ -20,6 +20,7 @@ const ProjectPage = () => {
   const [isReady, setIsReady] = useState(false);
   const [userProfile, setUserProfile] = useState([]);
   const [isOpen, setIsOpen] = useState(false);
+  const [error, setError] = useState('');
 
   const getProject = async projectId => {
     const [project] = await projects.filter(item => {
@@ -44,16 +45,21 @@ const ProjectPage = () => {
     return user;
   }
   const removeProject = async () => {
-    await firebase
-      .firestore()
-      .collection('projects')
-      .doc(singleProject.projectId)
-      .delete();
-    await setIsChange(!isChange);
-    await router.push('/');
+    if (singleProject.createdBy === user.uid) {
+      await firebase
+        .firestore()
+        .collection('projects')
+        .doc(singleProject.projectId)
+        .delete();
+      await setIsChange(!isChange);
+      await router.push('/');
+    } else {
+      setError('Only owners can delete projects');
+    }
   };
   const closeModal = () => {
     setIsOpen(false);
+    setError('');
   };
   const openModal = () => {
     setIsOpen(true);
@@ -85,6 +91,7 @@ const ProjectPage = () => {
           isOpen={isOpen}
           closeModal={closeModal}
           removeProject={removeProject}
+          error={error}
         />
         <Background isOpen={isOpen} closeModal={closeModal} />
 
@@ -108,8 +115,8 @@ const ProjectPage = () => {
                 </svg>
               </a>
             </Link>
-            <div className="flex items-center justify-between h-full pb-2 mt-3">
-              <h1 className="capitalize text-2xl font-bold  text-gray-100">
+            <div className="flex md:flex-row flex-col items-center justify-between pb-2 mt-3">
+              <h1 className="capitalize md:text-2xl text-xl font-bold text-gray-100">
                 {singleProject?.name}
               </h1>
               <button onClick={openModal} className="">

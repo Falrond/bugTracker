@@ -56,6 +56,9 @@ const InputBar = () => {
             >
               <input
                 onChange={({ target }) => setProjectName(target.value)}
+                required
+                pattern=".*\S+.*"
+                maxLength="22"
                 value={projectName}
                 className="md:w-[400px] w-full py-3 px-3 text-gray-100 rounded-md font-bold focus:outline-none shadow-md bg-[#585D73]"
                 type="text"

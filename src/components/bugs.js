@@ -11,6 +11,7 @@ const Bugs = ({ singleProject }) => {
   const [bugName, setBugName] = useState('');
   const [priority, setPriority] = useState('low');
   const [error, setError] = useState('');
+  console.log(singleProject?.bugs);
 
   const handleBug = async e => {
     e.preventDefault();
@@ -21,23 +22,30 @@ const Bugs = ({ singleProject }) => {
     ) {
       if (bugName) {
         const bugs = singleProject?.bugs;
-        const newBug = {
-          date: Date.now(),
-          priority,
-          status: false,
-          title: bugName,
-        };
+        const bugsnames = bugs.map(item => {
+          return item.title.toLowerCase();
+        });
+        if (!bugsnames.includes(bugName)) {
+          const newBug = {
+            date: Date.now(),
+            priority,
+            status: false,
+            title: bugName.trim(),
+          };
 
-        bugs.push(newBug);
-        await firebase
-          .firestore()
-          .collection('projects')
-          .doc(singleProject.projectId)
-          .set({ ...singleProject, bugs });
+          bugs.push(newBug);
+          await firebase
+            .firestore()
+            .collection('projects')
+            .doc(singleProject.projectId)
+            .set({ ...singleProject, bugs });
 
-        setBugName('');
-        setPriority('low');
-        setIsChange(!isChange);
+          setBugName('');
+          setPriority('low');
+          setIsChange(!isChange);
+        } else {
+          setError('Bug already exists');
+        }
       } else {
         setError('Enter the bug name');
       }
@@ -119,6 +127,8 @@ const Bugs = ({ singleProject }) => {
                 onChange={({ target }) => setBugName(target.value)}
                 className="md:w-[400px]  w-full py-3 px-3 text-gray-100 rounded-md font-bold focus:outline-none shadow-md bg-[#585D73]"
                 type="text"
+                pattern=".*\S+.*"
+                maxLength="22"
                 placeholder="Bug Description"
               />
               <div className="font-bold text-gray-100 md:mx-2 my-2 md:my-0 flex items-center justify-around md:w-[400px] h-[48px] tracking-wide px-4">
@@ -248,7 +258,7 @@ const Bugs = ({ singleProject }) => {
                       <th className="p-3">Priority</th>
                       <th className="p-3">Status</th>
                       <th className="p-3">Added</th>
-                      <th className="p-3">Change Status</th>
+                      <th className="p-3">Status</th>
                       <th className="p-3">Delete</th>
                     </tr>
                   );
@@ -266,9 +276,7 @@ const Bugs = ({ singleProject }) => {
                         item.status ? 'line-through opacity-40' : null
                       }`}
                     >
-                      <td className="p-4 h-[48px] truncate uppercase">
-                        {item.title}
-                      </td>
+                      <td className="p-4 h-[48px] truncate">{item.title}</td>
                       <td className="p-4 h-[48px] truncate">
                         <span
                           className={`py-2 px-3 rounded-md  ${

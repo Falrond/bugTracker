@@ -30,6 +30,11 @@ export const ProjectsProvider = ({ children }) => {
       ]);
     });
   };
+  console.log(projects);
+  const projectsNames = projects.map(item => {
+    return item.name.toLowerCase();
+  });
+  console.log(projectsNames);
 
   const handleProject = async e => {
     e.preventDefault();
@@ -37,17 +42,24 @@ export const ProjectsProvider = ({ children }) => {
       return item.value;
     });
     if (projectName && selected.length > 0) {
-      await firebase.firestore().collection('projects').add({
-        name: projectName,
-        bugs: [],
-        dateCreated: Date.now(),
-        members: filterSelected,
-        createdBy: user.uid,
-        authorName: user.displayName,
+      const projectsNames = projects.map(item => {
+        return item.name.toLowerCase();
       });
-      setSelected([]);
-      setProjectName('');
-      setIsChange(!isChange);
+      if (!projectsNames.includes(projectName)) {
+        await firebase.firestore().collection('projects').add({
+          name: projectName.toLowerCase().trim(),
+          bugs: [],
+          dateCreated: Date.now(),
+          members: filterSelected,
+          createdBy: user.uid,
+          authorName: user.displayName,
+        });
+        setSelected([]);
+        setProjectName('');
+        setIsChange(!isChange);
+      } else {
+        setError('Project already exists');
+      }
     } else {
       setError('Enter values');
     }

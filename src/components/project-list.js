@@ -21,7 +21,7 @@ const ProjectList = () => {
                     key={index}
                     className="flex flex-col flex-no wrap bg-dark-gray sm:table-row  sm:rounded-none mb-2 sm:mb-0"
                   >
-                    <th className="p-3 ">Project Name</th>
+                    <th className="p-3 ">Project</th>
                     <th className="p-3 ">Bugs</th>
                     <th className="p-3 ">Members</th>
                     <th className="p-3 ">Added</th>
@@ -38,12 +38,10 @@ const ProjectList = () => {
                 return (
                   <tr
                     key={item.projectId}
-                    className="flex flex-col flex-no text-sm bg-dark-gray wrap sm:table-row mb-2 sm:mb-0"
+                    className="flex flex-col flex-no text-sm  bg-dark-gray wrap sm:table-row mb-2 sm:mb-0"
                   >
-                    <td className="p-4 h-[48px] truncate uppercase">
-                      {item.name}
-                    </td>
-                    <td className="p-4 h-[48px] truncate">
+                    <td className="p-4  h-[48px] truncate">{item.name}</td>
+                    <td className="p-4 h-[48px]  truncate">
                       {item.bugs.length}
                     </td>
                     <td className="p-4  h-[48px]">{item.members.length}</td>
