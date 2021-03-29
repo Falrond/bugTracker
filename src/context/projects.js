@@ -30,11 +30,10 @@ export const ProjectsProvider = ({ children }) => {
       ]);
     });
   };
-  console.log(projects);
+
   const projectsNames = projects.map(item => {
     return item.name.toLowerCase();
   });
-  console.log(projectsNames);
 
   const handleProject = async e => {
     e.preventDefault();

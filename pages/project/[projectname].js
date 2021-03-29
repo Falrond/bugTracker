@@ -80,9 +80,6 @@ const ProjectPage = () => {
       router.push('/login');
     }
   }, [user]);
-  // useEffect(() => {
-  //   setIsChange(!isChange);
-  // }, []);
 
   return (
     user && (

@@ -33,16 +33,3 @@ export default function Home() {
     </>
   );
 }
-
-// client side rendered app
-// database which is Firebase
-// tailwind css
-
-// folder structure
-// components,
-// constants,
-// context,
-// helpers,
-// lib,
-// services (firebase functions in here)
-// styles

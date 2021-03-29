@@ -73,17 +73,6 @@ const ProjectList = () => {
           </table>
         </div>
       </div>
-      {/* <div className="container mx-auto mt-6 max-w-screen-lg fadein">
-        <div className="h-full">
-          <h1 className="font-spartan mx-8 text-2xl text-red-300 font-bold mb-7 ">
-            Projects
-          </h1>
-
-          {filteredProjects?.map(item => {
-            return <Project key={item.projectId} item={item} />;
-          })}
-        </div>
-      </div> */}
     </>
   );
 };

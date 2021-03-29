@@ -52,12 +52,7 @@ const Login = () => {
             </p>
           )}
 
-          <form
-            onSubmit={handleLogin}
-            method="POST"
-            className="font-spartan"
-            // aria-label="wpisz swój adres email"
-          >
+          <form onSubmit={handleLogin} method="POST" className="font-spartan">
             <input
               type="text"
               placeholder="Email address"

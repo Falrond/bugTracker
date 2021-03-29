@@ -66,12 +66,7 @@ const SignUp = () => {
             </p>
           )}
 
-          <form
-            onSubmit={handleSignUp}
-            method="POST"
-            className="font-spartan"
-            // aria-label="wpisz swój adres email"
-          >
+          <form onSubmit={handleSignUp} method="POST" className="font-spartan">
             <input
               type="text"
               placeholder="Username"
