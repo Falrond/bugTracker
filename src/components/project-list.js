@@ -13,7 +13,7 @@ const ProjectList = () => {
     <>
       <div className="flex items-center justify-center  fadein mx-auto">
         <div className="container max-w-screen-lg">
-          <table className="w-full flex flex-row flex-no-wrap   md:rounded-md overflow-hidden sm:shadow-lg my-5">
+          <table className="w-full flex flex-row flex-no-wrap fadein  md:rounded-md overflow-hidden sm:shadow-lg my-5">
             <thead className="text-red-300">
               {filteredProjects?.map((item, index) => {
                 return (

@@ -82,6 +82,9 @@ const Login = () => {
               Login
             </button>
           </form>
+          <p className="text-xs font-spartan text-gray-100 font-bold text-center ">
+            Demo account: test1@gmail.com / password: test123
+          </p>
           <div className="py-3 mb-6 text-center font-spartan text-sm font-bold text-gray-50">
             {' '}
             <p>

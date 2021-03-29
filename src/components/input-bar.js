@@ -38,7 +38,7 @@ const InputBar = () => {
 
   return (
     user && (
-      <div className="container mx-auto py-8 my-4 bg-dark-gray shadow-md md:rounded-md max-w-screen-lg font-spartan">
+      <div className="container mx-auto py-8 my-4 bg-dark-gray fadein shadow-md md:rounded-md max-w-screen-lg font-spartan">
         <div className="mx-8">
           <h1 className="md:text-2xl text-red-300 font-bold mb-6  tracking-wide">
             Add Project

@@ -14,7 +14,8 @@ const SignUp = () => {
   const [password, setPassword] = useState('');
 
   const [error, setError] = useState('');
-  const isInvalid = password === '' || email === '';
+  const isInvalid =
+    password === '' || email === '' || fullName === '' || username === '';
 
   const handleSignUp = async e => {
     e.preventDefault();
